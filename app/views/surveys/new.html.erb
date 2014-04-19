@@ -1,0 +1,14 @@
+<h1>New Survey</h1>
+
+<% if @survey.errors.present? %>
+  <div class="alert alert-error">
+    <strong>Error:</strong> <%= @survey.errors.full_messages.to_sentence %>
+  </div>
+<% end %>
+
+<%= simple_form_for @survey do |f| %>
+  <%= f.input :title %>
+  <%= f.input :passcode %>
+
+  <%= f.submit 'Save' %>
+<% end %>
