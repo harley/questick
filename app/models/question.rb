@@ -3,4 +3,6 @@ class Question < ActiveRecord::Base
 
   enumerize :kind, in: [:checkbox, :radio, :dropdown]
   belongs_to :survey
+
+  validates :kind, presence: true
 end

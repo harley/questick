@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20140419044054) do
     t.integer  "position"
     t.integer  "survey_id"
     t.string   "kind"
-    t.string   "title"
+    t.text     "title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

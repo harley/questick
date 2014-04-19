@@ -4,7 +4,7 @@ class CreateQuestions < ActiveRecord::Migration
       t.integer :position
       t.references :survey, index: true
       t.string :kind
-      t.string :title
+      t.text :title
 
       t.timestamps
     end
