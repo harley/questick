@@ -1,4 +1,4 @@
-## Questionery
+## Questick
 
 ### A simple survey app for you to embed on yoursite.
 
