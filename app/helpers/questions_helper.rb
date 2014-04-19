@@ -4,10 +4,14 @@ module QuestionsHelper
   end
 
   def render_question_choices question
-    content_for :div, class: 'question-choices' do
+    content_for :div, class: 'question-choices form-horizontal' do
       question.choices.each do |choice|
         render_choice choice
       end
     end
+  end
+
+  def render_question_title question
+    safe_join [content_tag(:span, question.kind, class: 'label label-default'), ' ', content_tag(:strong, question.title)]
   end
 end
