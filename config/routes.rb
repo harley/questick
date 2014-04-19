@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     resources :choices
   end
 
+  resources :responses
   resources :surveys do
     resources :questions
   end

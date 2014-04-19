@@ -27,6 +27,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    angularjs-rails (1.2.16)
     arel (5.0.1.20140414130214)
     bootstrap-sass (3.1.1.1)
       sass (~> 3.2)
@@ -57,6 +58,8 @@ GEM
     mime-types (1.25.1)
     minitest (5.3.3)
     multi_json (1.9.2)
+    ngmin-rails (0.4.0)
+      rails (>= 3.1)
     pg (0.17.1)
     polyglot (0.3.4)
     rack (1.5.2)
@@ -80,8 +83,6 @@ GEM
     rake (10.3.1)
     rdoc (4.1.1)
       json (~> 1.4)
-    rename (1.0.2)
-      rails (>= 3.0.0)
     sass (3.2.19)
     sass-rails (4.0.3)
       railties (>= 4.0.0, < 5.0)
@@ -122,14 +123,15 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  angularjs-rails (~> 1.2.16)
   bootstrap-sass (~> 3.1.1.1)
   coffee-rails (~> 4.0.0)
   enumerize (~> 0.8.0)
   jbuilder (~> 2.0)
   jquery-rails
+  ngmin-rails (~> 0.4.0)
   pg
   rails (= 4.1.0)
-  rename
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   simple_form (~> 3.0.2)

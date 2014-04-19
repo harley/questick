@@ -2,10 +2,10 @@
 <html>
 <head>
   <title>Questick</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body ng-app='myApp'>
   <% if flash.present? %>
     <%- flash.each do |name, msg| -%>
       <div class="alert <%= flash_alert_class(name) %>">
@@ -25,6 +25,6 @@
   <div class="container">
     <%= yield %>
   </div>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'app/app', 'data-turbolinks-track' => true %>
 </body>
 </html>

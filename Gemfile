@@ -41,4 +41,5 @@ gem 'spring',        group: :development
 gem 'simple_form', '~> 3.0.2'
 gem 'enumerize', '~> 0.8.0'
 gem 'bootstrap-sass', '~> 3.1.1.1'
-gem 'rename'
+gem 'angularjs-rails', '~> 1.2.16'
+gem 'ngmin-rails', '~> 0.4.0'

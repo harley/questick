@@ -7,6 +7,9 @@
 <%= link_to "New", new_survey_path %>
 <ul>
 <% Survey.all.each do |survey| %>
-  <li><%= link_to survey.title, survey %></li>
+  <li>
+    <%= link_to survey.title, survey %>
+    <%= link_to 'take', new_response_path(survey_id: survey), class: 'label label-info' %>
+  </li>
 <% end %>
 </ul>
