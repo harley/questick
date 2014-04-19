@@ -1,0 +1,8 @@
+<h2>New Choice</h2>
+
+<h3><small>Question: </small> <%= link_to @question.title, @question.survey %></h3>
+
+<%= simple_form_for [@question, @choice] do |f| %>
+  <%= f.input :text %>
+  <%= f.submit nil, class: 'btn btn-default', data: {disable_with: 'Saving...'} %>
+<% end %>

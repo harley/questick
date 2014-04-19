@@ -5,3 +5,8 @@
 </div>
 
 <%= link_to "New", new_survey_path %>
+<ul>
+<% Survey.all.each do |survey| %>
+  <li><%= link_to survey.title, survey %></li>
+<% end %>
+</ul>
