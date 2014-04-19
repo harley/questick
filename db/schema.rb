@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20140419044054) do
   enable_extension "plpgsql"
 
   create_table "questions", force: true do |t|
+    t.integer  "position"
     t.integer  "survey_id"
     t.string   "kind"
     t.string   "title"

@@ -4,5 +4,5 @@
 <%= simple_form_for [@survey, @question] do |f| %>
   <%= f.input :kind, prompt: 'Select a question type' %>
   <%= f.input :title %>
-  <%= f.submit nil, class: 'btn btn-default' %>
+  <%= f.submit nil, class: 'btn btn-default', data: {disable_with: 'Saving...'} %>
 <% end %>
