@@ -1,0 +1,8 @@
+<h1><small>Survey:</small> <%= link_to @survey.title, @survey %></h1>
+<h2>New question</h2>
+
+<%= simple_form_for [@survey, @question] do |f| %>
+  <%= f.input :kind, prompt: 'Select a question type' %>
+  <%= f.input :title %>
+  <%= f.submit nil, class: 'btn btn-default' %>
+<% end %>

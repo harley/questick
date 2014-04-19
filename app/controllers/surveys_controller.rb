@@ -1,4 +1,9 @@
 class SurveysController < ApplicationController
+  def index
+    # TODO: admin only
+    @surveys = Survey.all
+  end
+
   def new
     @survey = Survey.new
   end

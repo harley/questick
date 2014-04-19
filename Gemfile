@@ -39,4 +39,5 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'simple_form', '~> 3.0.2'
-
+gem 'enumerize', '~> 0.8.0'
+gem 'bootstrap-sass', '~> 3.1.1.1'
