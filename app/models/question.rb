@@ -1,7 +1,7 @@
 class Question < ActiveRecord::Base
   extend Enumerize
 
-  enumerize :kind, in: [:check_box, :radio, :dropdown]
+  enumerize :kind, in: [:checkbox, :radio, :dropdown]
   belongs_to :survey
   has_many :choices
 

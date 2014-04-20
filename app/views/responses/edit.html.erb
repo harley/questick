@@ -1,35 +1,32 @@
 <script type="text/javascript" charset="utf-8">window.responseId = <%= @response.id %></script>
 
-<div ng-controller='HomeCtrl'>
-  <div>
-    <div class="well">
-      {{response}}
-    </div>
-  </div>
-
+<div ng-controller='ResponseCtrl'>
   <div class="row">
     <div class="col-sm-6">
       <div response='response'>
-        <div class='survey-title'><span class='label label-default'>Survey</span>: {{response.survey.title}}</div>
+        <div class='survey-title'><a class='label label-default' href="<%= survey_path(@response.survey) %>">Survey</a> {{response.survey.title}}</div>
         <div class="questions">
           <div class="question" ng-repeat='question in response.questions' ng-controller='QuestionCtrl'>
             <div class='question-title'><span class='label label-default'>{{question.kind}}</span> {{question.title}}</div>
             <div class='question-choices'>
-              <div ng-repeat='choice in question.choices'>
-                <div class='radio' ng-if="question.kind=='radio'">
-                  <label>
-                    <input type='radio' name='question-{{question.id}}' ng-model='choice.answer' ng-click='saveAnswer(response, question, choice)'/>
-                    {{choice.text}}
-                  </label>
+              <div ng-switch on="question.kind">
+                <div ng-switch-when="radio">
+                  <div ng-repeat='choice in question.choices' has-answer class="radio">
+                    <label>
+                      <input value="{{choice.text}}" type='radio' name='question-{{question.id}}'
+                             ng-model='question.selected_value' ng-change='updateRadios(question, choice)'/>
+                      {{choice.text}}
+                    </label>
+                  </div>
                 </div>
-
-                <div class='checkbox' ng-if="question.kind=='check_box'">
-                  <label>
-                    <input type='checkbox' name='question-{{question.id}}' ng-model='choice.answer' ng-click='saveAnswer(response, question, choice)'/>
-                    {{choice.text}}
-                  </label>
+                <div ng-switch-when="checkbox">
+                  <div ng-repeat='choice in question.choices' has-answer class="checkbox">
+                    <label>
+                      <input type="checkbox" value="{{choice.text}}" ng-model="choice.selected" ng-change="updateCheckboxes(choice)"/>
+                      {{choice.text}}
+                    </label>
+                  </div>
                 </div>
-
               </div>
             </div>
           </div>
@@ -37,9 +34,11 @@
       </div>
     </div>
     <div class="col-sm-6" ng-controller='ResultsCtrl'>
-      <h1>Results</h1>
+      <div class="well">{{response.answer_bucket}}</div>
+      <h3>Results</h3>
       <button class='btn btn-sm btn-default' ng-click="reloadAnswers(<%= @response.id %>)">Reload</button>
       <%= link_to "Export To CSV", survey_path(@response.survey, format: :csv), class: 'btn btn-default btn-sm' %>
+      <%= link_to "View CSV as Text", survey_path(@response.survey, format: :txt), class: 'btn btn-default btn-sm' %>
       <div class="well">{{answers}}</div>
     </div>
   </div>

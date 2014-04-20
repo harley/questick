@@ -2,7 +2,9 @@
 
 <h3><small>Question: </small> <%= link_to @question.title, @question.survey %></h3>
 
-<%= simple_form_for [@question, @choice] do |f| %>
-  <%= f.input :text %>
-  <%= f.submit nil, class: 'btn btn-default', data: {disable_with: 'Saving...'} %>
+<%= simple_form_for [@question, @choice], html: {class: 'form-horizontal'} do |f| %>
+  <%= f.input :text, as: :string %>
+  <div class="form-group">
+    <%= f.submit nil, class: 'btn btn-default', data: {disable_with: 'Saving...'} %>
+  </div>
 <% end %>

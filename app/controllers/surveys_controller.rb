@@ -23,6 +23,7 @@ class SurveysController < ApplicationController
     respond_to do |format|
       format.html
       format.csv { send_data @survey.to_csv(@survey.responses) }
+      format.text { render text: @survey.to_csv(@survey.responses) }
     end
   end
 
