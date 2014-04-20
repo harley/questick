@@ -7,30 +7,39 @@
     </div>
   </div>
 
-  <div response='response'>
-    <div class='survey-title'><span class='label label-default'>Survey</span>: {{response.survey.title}}</div>
-    <div class="questions">
-      <div class="question" ng-repeat='question in response.questions'>
-        <div class='question-title'><span class='label label-default'>{{question.kind}}</span> {{question.title}}</div>
-        <div class='question-choices'>
-          <div ng-repeat='choice in question.choices'>
-            <div class='radio' ng-if="question.kind=='radio'">
-              <label>
-                <input type='radio' />
-                {{choice.text}}
-              </label>
-            </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <div response='response'>
+        <div class='survey-title'><span class='label label-default'>Survey</span>: {{response.survey.title}}</div>
+        <div class="questions">
+          <div class="question" ng-repeat='question in response.questions' ng-controller='QuestionCtrl'>
+            <div class='question-title'><span class='label label-default'>{{question.kind}}</span> {{question.title}}</div>
+            <div class='question-choices'>
+              <div ng-repeat='choice in question.choices'>
+                <div class='radio' ng-if="question.kind=='radio'">
+                  <label>
+                    <input type='radio' name='question-{{question.id}}' ng-model='choice.answer' ng-click='saveAnswer(response, question, choice)'/>
+                    {{choice.text}}
+                  </label>
+                </div>
 
-            <div class='checkbox' ng-if="question.kind=='check_box'">
-              <label>
-                <input type='checkbox' />
-                {{choice.text}}
-              </label>
-            </div>
+                <div class='checkbox' ng-if="question.kind=='check_box'">
+                  <label>
+                    <input type='checkbox' name='question-{{question.id}}' ng-model='choice.answer' ng-click='saveAnswer(response, question, choice)'/>
+                    {{choice.text}}
+                  </label>
+                </div>
 
+              </div>
+            </div>
           </div>
         </div>
       </div>
+    </div>
+    <div class="col-sm-6" ng-controller='ResultsCtrl'>
+      <h1>Results</h1>
+      <button ng-click="reloadAnswers(<%= @response.id %>)">Reload</button>
+      <div class="well">{{answers}}</div>
     </div>
   </div>
 </div>

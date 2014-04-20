@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
+  resources :answers
+
   namespace :api, defaults: {format: :json} do
-    resources :responses
+    resources :responses do
+      resources :answers
+    end
+    resources :answers
   end
 
   resources :questions do
