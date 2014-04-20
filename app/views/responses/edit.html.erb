@@ -38,7 +38,8 @@
     </div>
     <div class="col-sm-6" ng-controller='ResultsCtrl'>
       <h1>Results</h1>
-      <button ng-click="reloadAnswers(<%= @response.id %>)">Reload</button>
+      <button class='btn btn-sm btn-default' ng-click="reloadAnswers(<%= @response.id %>)">Reload</button>
+      <%= link_to "Export To CSV", survey_path(@response.survey, format: :csv), class: 'btn btn-default btn-sm' %>
       <div class="well">{{answers}}</div>
     </div>
   </div>

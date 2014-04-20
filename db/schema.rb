@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20140420070022) do
 
   add_index "answers", ["choice_id"], name: "index_answers_on_choice_id", using: :btree
   add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
+  add_index "answers", ["response_id", "question_id"], name: "index_answers_on_response_id_and_question_id", using: :btree
   add_index "answers", ["response_id"], name: "index_answers_on_response_id", using: :btree
 
   create_table "choices", force: true do |t|

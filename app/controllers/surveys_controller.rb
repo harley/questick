@@ -19,6 +19,11 @@ class SurveysController < ApplicationController
 
   def show
     @survey = Survey.find params[:id]
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @survey.to_csv(@survey.responses) }
+    end
   end
 
   private

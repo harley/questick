@@ -1,4 +1,9 @@
-<h1><%= @survey.title %></h1>
+<h1>
+  <%= @survey.title %>
+  <small>
+    <%= link_to 'take', new_response_path(survey_id: @survey.id), class: 'label label-default' %>
+  </small>
+</h1>
 
 <div class="questions">
   <% @survey.questions.each_with_index do |question, i| %>

@@ -10,6 +10,7 @@
   <li>
     <%= link_to survey.title, survey %>
     <%= link_to 'take', new_response_path(survey_id: survey), class: 'label label-info' %>
+    <%= link_to "Export To CSV", survey_path(survey, format: :csv), class: 'label label-info' %>
   </li>
 <% end %>
 </ul>
