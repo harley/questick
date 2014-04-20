@@ -2,10 +2,11 @@ angular.module('myApp.services',[]).factory('ResponseService', function($http, $
   var service = {
     getResponse: function(responseId) {
       var d = $q.defer();
-      $http.get('/api/responses').then(function(data, status){
+
+      $http.get('/api/responses' + '/' + responseId).then(function(data, status){
         if (data.status == 200) {
           console.log('data', data);
-          d.resolve(data.data.responseData);
+          d.resolve(data.data);
         }
         else {
           d.reject(data);
@@ -17,5 +18,3 @@ angular.module('myApp.services',[]).factory('ResponseService', function($http, $
   };
   return service;
 });
-
-

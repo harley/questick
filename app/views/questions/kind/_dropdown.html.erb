@@ -1,0 +1,14 @@
+<div class="question-title">
+  <%= render_question_title question %>
+</div>
+<div class="question-choices">
+  <select name="question-<%= question.id %>-choices" id="" class="form-control input-sm">
+    <% question.choices.each do |choice| %>
+      <option value="<%= choice.id %>"><%= choice.text %></option>
+    <% end %>
+  </select>
+</div>
+
+<div>
+  <%= link_to "Add Choice", new_question_choice_path(question), class: 'btn btn-sm' %>
+</div>
