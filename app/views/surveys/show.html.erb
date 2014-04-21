@@ -2,11 +2,13 @@
   <%= @survey.title %>
   <small>
     <div class="badge badge-info"><%= pluralize @survey.responses.size, 'response' %></div>
+  </small>
+</h1>
+<div>
     <%= link_to 'Take', new_response_path(survey_id: @survey.id), class: 'btn btn-default btn-sm' %>
     <%= link_to "Export To CSV", survey_path(@survey, format: :csv), class: 'btn btn-default btn-sm' %>
     <%= link_to "View CSV as Text", survey_path(@survey, format: :txt), class: 'btn btn-default btn-sm' %>
-  </small>
-</h1>
+</div>
 
 <div class="questions">
   <% @survey.questions.each_with_index do |question, i| %>

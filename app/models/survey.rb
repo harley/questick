@@ -13,7 +13,7 @@ class Survey < ActiveRecord::Base
         row = [r.id, r.ip, r.referer]
         questions.each do |q|
           answers = Answer.where(question_id: q.id, response_id: r.id)
-          row << answers.map(&:value).to_sentence
+          row << answers.select{|a| a.value.present?}.map(&:value).join(', ')
         end
         csv << row
       end

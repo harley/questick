@@ -1,16 +1,19 @@
-<h1>Tick</h1>
+<h2>Easily embed a survey on your site</h2>
 
+<%= link_to "Create A Survey", new_survey_path, class: 'btn btn-default' %>
+
+<h3>Recent surveys</h3>
 <div>
-  Time is money!
-</div>
-
-<%= link_to "New", new_survey_path %>
-<ul>
 <% Survey.all.each do |survey| %>
-  <li>
-    <%= link_to survey.title, survey %>
-    <%= link_to 'take', new_response_path(survey_id: survey), class: 'label label-info' %>
-    <%= link_to "Export To CSV", survey_path(survey, format: :csv), class: 'label label-info' %>
-  </li>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <%= link_to survey.title, survey %>
+    </div>
+    <div class="panel-body">
+      <%= link_to 'Take', new_response_path(survey_id: survey), class: 'label label-info', target: '_blank' %>
+      <%= link_to "Export To CSV", survey_path(survey, format: :csv), class: 'label label-info', target: '_blank' %>
+      <%= link_to "View CSV as Text", survey_path(@survey, format: :txt), class: 'label label-info', target: '_blank' %>
+    </div>
+  </div>
 <% end %>
-</ul>
+</div>
