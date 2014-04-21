@@ -23,3 +23,5 @@ app.controller 'QuestionCtrl', ($scope, $resource) ->
     #   console.log('unsuccessful')
     # )
 
+app.controller 'AnswerCtrl', ($scope, AnswerHelper) ->
+  $scope.choice.currentAnswer = AnswerHelper.findAnswer($scope.response, $scope.choice)

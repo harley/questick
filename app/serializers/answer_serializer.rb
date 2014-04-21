@@ -1,4 +1,6 @@
 class AnswerSerializer < ActiveModel::Serializer
+  self.root = false
+
   embed :ids
 
   attributes :id, :value

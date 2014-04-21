@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
     resources :responses do
       resources :answers
+      member do
+        put :update_answers
+      end
     end
     resources :answers
   end

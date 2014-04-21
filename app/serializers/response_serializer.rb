@@ -7,7 +7,7 @@ class ResponseSerializer < ActiveModel::Serializer
     ret = {}
     object.questions.each do |q|
       q.choices.each do |c|
-        a = Answer.create(response_id: object.id, question_id: q.id, choice_id: c.id)
+        a = Answer.where(response_id: object.id, question_id: q.id, choice_id: c.id).first_or_create
         ret[a.hashed_id] = AnswerSerializer.new(a)
       end
     end
