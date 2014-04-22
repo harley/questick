@@ -1,7 +1,14 @@
 class SurveysController < ApplicationController
   def index
-    # TODO: admin only
-    @surveys = Survey.all
+    if params[:d] == 'supersecret'
+      # TODO: admin only
+      @surveys = Survey.all
+    elsif params[:passcode]
+      @surveys = Survey.where(passcode: params[:passcode])
+    else
+      flash.now[:notice] = "Showing surveys without a passcode."
+      @surveys = Survey.where(passcode: nil)
+    end
   end
 
   def new

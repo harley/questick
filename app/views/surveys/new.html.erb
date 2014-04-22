@@ -6,7 +6,7 @@
   </div>
 <% end %>
 
-<%= simple_form_for @survey do |f| %>
+<%= simple_form_for @survey, html: {class: 'form-horizontal'} do |f| %>
   <%= f.input :title %>
   <%= f.input :passcode %>
 
