@@ -1,0 +1,3 @@
+<%= link_to 'Take', new_response_path(survey_id: survey), class: 'label label-info', target: '_blank' %>
+<%= link_to "Export To CSV", survey_path(survey, format: :csv), class: 'label label-info', target: '_blank' %>
+<%= link_to "View CSV as Text", survey_path(survey, format: :txt), class: 'label label-info', target: '_blank' %>

@@ -1,0 +1,43 @@
+<script type="text/javascript" charset="utf-8">window.responseId = <%= response.id %></script>
+<div response="response">
+  <div class='survey-title'>
+    <% if admin? %>
+      <a class='label label-default' href="<%= survey_path(response.survey) %>">Survey</a>
+    <% end %>
+    {{response.survey.title}}</div>
+  <div class="questions">
+    <div class="question" ng-repeat='question in response.questions' ng-controller='QuestionCtrl'>
+      <div class='question-title'>
+        <% if admin? %>
+          <span class='label label-default'>{{question.kind}}</span>
+        <% end %>
+        {{question.title}}
+      </div>
+      <div class='question-choices'>
+        <div ng-switch on="question.kind">
+          <div ng-switch-when="radio">
+            <div ng-repeat='choice in question.choices' class="radio" ng-controller="AnswerCtrl">
+              <label has-answer>
+                <input value="{{choice.text}}" type='radio' name='question-{{question.id}}-radio'
+                ng-model='choice.currentAnswer.value' ng-change='clearOtherChoices(question, choice, choice.currentAnswer)'/>
+                {{choice.text}}
+              </label>
+            </div>
+          </div>
+          <div ng-switch-when="checkbox">
+            <div ng-repeat='choice in question.choices' class="checkbox" ng-controller="AnswerCtrl">
+              <label has-answer>
+                <input type="checkbox" value="{{choice.text}}"
+                ng-model="choice.currentAnswer.value" ng-true-value="{{choice.text}}" ng-false-value="" />
+                {{choice.text}}
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= form_for response do |f| %>
+    <%= f.submit 'Submit', class: 'btn btn-primary btn-lg' %>
+  <% end %>
+</div>

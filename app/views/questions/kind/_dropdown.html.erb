@@ -1,8 +1,8 @@
 <div class="question-title">
   <%= render_question_title question %>
 </div>
-<div class="question-choices">
-  <select name="question-<%= question.id %>-choices" id="" class="form-control input-sm">
+<div class="question-choices form-group">
+  <select name="question-<%= question.id %>-choices" id="" class="input-sm">
     <% question.choices.each do |choice| %>
       <option value="<%= choice.id %>"><%= choice.text %></option>
     <% end %>

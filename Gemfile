@@ -44,3 +44,8 @@ gem 'bootstrap-sass', '~> 3.1.1.1'
 gem 'angularjs-rails', '~> 1.2.16'
 gem 'ngmin-rails', '~> 0.4.0'
 gem 'active_model_serializers', '~> 0.8.1'
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end

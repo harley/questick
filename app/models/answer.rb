@@ -6,4 +6,12 @@ class Answer < ActiveRecord::Base
   def hashed_id
     "a-#{response.id}-#{choice.id}"
   end
+
+  def quoted_value
+    if value && value.include?(',')
+      %{"#{value}"}
+    else
+      value
+    end
+  end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140420070022) do
+ActiveRecord::Schema.define(version: 20140422005519) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,9 @@ ActiveRecord::Schema.define(version: 20140420070022) do
     t.string   "referer"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "embed"
+    t.datetime "start_at"
+    t.datetime "stop_at"
   end
 
   add_index "responses", ["survey_id"], name: "index_responses_on_survey_id", using: :btree

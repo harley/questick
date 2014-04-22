@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   end
 
   resources :responses
+
   resources :surveys do
     resources :questions
   end
