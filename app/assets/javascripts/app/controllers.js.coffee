@@ -1,4 +1,4 @@
-window.app = angular.module('myApp.controllers', [])
+app = angular.module('myApp.controllers', [])
 
 app.controller 'ResponseCtrl', ($scope, ResponseService) ->
   ResponseService.getResponse(window.responseId).then (d) -> $scope.response = d.response
