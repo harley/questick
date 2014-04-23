@@ -15,7 +15,7 @@ class ResponsesController < ApplicationController
 
   def edit
     @response = Response.find params[:id]
-    render layout: 'angular'
+    render layout: 'plain'
   end
 
   def update
@@ -29,6 +29,6 @@ class ResponsesController < ApplicationController
   end
 
   def thankyou
-    render layout: 'angular'
+    render layout: 'plain'
   end
 end

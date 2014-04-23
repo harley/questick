@@ -1,1 +1,1 @@
-Rails.application.config.assets.precompile += %w( app/app.js )
+Rails.application.config.assets.precompile += %w( plain.js )

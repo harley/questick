@@ -1,11 +1,15 @@
-<h3>Surveys</h3>
-<ul>
-  <% @surveys.each do |survey| %>
-    <li>
+<div class="survey-container">
+  <h3>Surveys</h3>
+  <ul>
+    <% @surveys.each do |survey| %>
+      <li>
       <%= link_to survey.title, survey %>
       <span class="badge"><%= pluralize survey.questions.size, 'question' %></span>
       <span class="badge"><%= pluralize survey.questions.size, 'responses' %></span>
-    </li>
-  <% end %>
-</ul>
-<%= render 'surveys/passcode_form' %>
+      </li>
+    <% end %>
+  </ul>
+  <%= link_to "Create A Survey", new_survey_path, class: 'btn btn-default btn-lg' %>
+  <p></p>
+  <%= render 'surveys/passcode_form' %>
+</div>

@@ -4,9 +4,13 @@ class Question < ActiveRecord::Base
   ranks :position, with_same: :survey_id
   extend Enumerize
 
-  enumerize :kind, in: [:checkbox, :radio, :dropdown]
+  enumerize :kind, in: [:checkbox, :radio, :text]
   belongs_to :survey
   has_many :choices, -> { order('position') }, dependent: :destroy
 
   validates :kind, presence: true
+
+  def to_s
+    title
+  end
 end

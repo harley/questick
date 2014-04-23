@@ -27,4 +27,8 @@ class Survey < ActiveRecord::Base
     end
     ret
   end
+
+  def to_s
+    title
+  end
 end

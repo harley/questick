@@ -1,19 +1,19 @@
-<h1 class="survey-title">
+<h1 class="survey-title text-center">
   <%= @survey.title %>
   <small>
     <div class="badge badge-info"><%= pluralize @survey.responses.size, 'response' %></div>
   </small>
 </h1>
 
-<div class="row" style="padding-right:20px">
-  <div class="col-xs-6">
-    <%= link_to 'Take', new_response_path(survey_id: @survey.id), class: 'btn btn-default btn-sm', target: '_blank' %>
-    <%= link_to "Export To CSV", survey_path(@survey, format: :csv), class: 'btn btn-default btn-sm' %>
-    <%= link_to "View CSV as Text", survey_path(@survey, format: :txt), class: 'btn btn-default btn-sm' %>
+<div class="text-center">
+  <div>
+    <%= link_to 'Take', new_response_path(survey_id: @survey.id), class: 'btn btn-default btn-xs', target: '_blank' %>
+    <%= link_to "Export To CSV", survey_path(@survey, format: :csv), class: 'btn btn-default btn-xs' %>
+    <%= link_to "View CSV as Text", survey_path(@survey, format: :txt), class: 'btn btn-default btn-xs' %>
   </div>
-  <div class="input-group col-xs-6 input-group-sm">
-    <span class="input-group-addon">Embed this survey</span>
-    <input type="text" class="form-control input-xs" value="<%= new_response_url(survey_id: @survey, embed: true) %>"/>
+  <div class="input-group input-group-sm" style="width:440px;margin:20px auto 0">
+    <span class="input-group-addon">Link to embed</span>
+    <input type="text" class="form-control input-xs" value="<%= new_response_url(survey_id: @survey, embed: true) %>" style="font-size:.8em"/>
   </div>
 </div>
 

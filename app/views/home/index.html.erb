@@ -1,9 +1,9 @@
-<h2>Easily embed a survey on your site</h2>
+<div class="survey-container">
+  <%= link_to "Create A Survey", new_survey_path, class: 'btn btn-default btn-lg' %>
+  <p></p>
 
-<%= link_to "Create A Survey", new_survey_path, class: 'btn btn-default btn-lg' %>
-<p></p>
-
-<%= render 'surveys/passcode_form' %>
+  <%= render 'surveys/passcode_form' %>
+</div>
 
 <% if admin? %>
   <h3>Recent surveys</h3>

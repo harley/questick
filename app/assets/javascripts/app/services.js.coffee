@@ -32,7 +32,7 @@ app.factory 'ResponseService', ($http, $q, $resource) ->
       d.promise
 
     saveResponse: (response) ->
-      console.log('inside ResponseService.saveResponse')
+      console.log('saving answers')
       Response.updateAnswers({id: response.id, bucket: response.answer_bucket})
 
   service

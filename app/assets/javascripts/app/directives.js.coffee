@@ -18,7 +18,6 @@ app.directive 'autosave', ($timeout, ResponseService) ->
     restrict: 'A',
     link: (scope, element, attrs) ->
       saveUpdates = ->
-        console.log "Saving...."
         ResponseService.saveResponse(scope.response)
 
       timeoutPromise = null
@@ -27,10 +26,10 @@ app.directive 'autosave', ($timeout, ResponseService) ->
         if newVal != oldVal
           if (timeoutPromise)
             $timeout.cancel(timeoutPromise)
-          timeoutPromise = $timeout(saveUpdates, 1000)
+          timeoutPromise = $timeout(saveUpdates, 500)
 
-      dummySave = ->
-        console.log "dummy save"
+      dummySave = -> console.log "dummy save"
+
       scope.$watch((-> JSON.stringify(scope.response?.answer_bucket)), debounceSave)
   }
 
