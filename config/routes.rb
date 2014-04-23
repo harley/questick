@@ -18,7 +18,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :responses
+  resources :responses do
+    member do
+      get :thankyou
+    end
+  end
 
   resources :surveys do
     resources :questions

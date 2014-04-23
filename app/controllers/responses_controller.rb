@@ -21,7 +21,14 @@ class ResponsesController < ApplicationController
   def update
     @response = Response.find params[:id]
     @response.stop_at = Time.now
-    @response.save
-    render text: 'Thank you. Your response has been saved'
+    if @response.save
+      redirect_to thankyou_response_path(@response)
+    else
+      logger.error "[Error] Can't save response #{@response.inspect}"
+    end
+  end
+
+  def thankyou
+    render layout: 'angular'
   end
 end
