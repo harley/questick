@@ -2,5 +2,20 @@
   <% unless question.choices.detect{|e| e.new_record?} %>
     <%= add_choice_link(question) %>
   <% end %>
-  <%= link_to "Remove question", [question.survey, question], method: 'delete', class: 'btn-remove btn btn-sm', data: {confirm: "Sure to remove this question?"} %>
+  <div class="pull-right">
+    <div class="btn-group">
+      <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+        More
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><%= link_to "Move to first", move_question_path(question, dir: 'first'), method: 'put' %></li>
+        <li><%= link_to "Move up", move_question_path(question, dir: 'up'), method: 'put' %></li>
+        <li><%= link_to "Move down", move_question_path(question, dir: 'down'), method: 'put' %></li>
+        <li><%= link_to "Move to last", move_question_path(question, dir: 'last'), method: 'put' %></li>
+        <li class="divider"></li>
+        <li><%= link_to "Remove question", [question.survey, question], method: 'delete', data: {confirm: "Sure to remove this question?"} %></li>
+      </ul>
+    </div>
+  </div>
 </div>

@@ -19,10 +19,10 @@
 }
 
 .question {
-  .btn-remove {
+  .visible-on-hover {
     visibility: hidden;
   }
-  &:hover .btn-remove {
+  &:hover .visible-on-hover {
     visibility: visible;
   }
 }

@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :load_survey, except: [:show]
+  before_action :load_survey, except: [:show, :move]
 
   def new
     @question = @survey.questions.new
@@ -27,6 +27,12 @@ class QuestionsController < ApplicationController
     else
       redirect_to root_path, notice: 'Question removed. Return to homepage because no associated survey is found'
     end
+  end
+
+  def move
+    @question = Question.find params[:id]
+    @question.update_attribute :position_position, params[:dir]
+    redirect_to :back
   end
 
   private

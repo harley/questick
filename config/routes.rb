@@ -13,6 +13,9 @@ Rails.application.routes.draw do
 
   resources :questions do
     resources :choices
+    member do
+      put :move
+    end
   end
 
   resources :responses
