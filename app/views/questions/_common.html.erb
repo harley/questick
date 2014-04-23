@@ -1,0 +1,6 @@
+<div>
+  <% unless question.choices.detect{|e| e.new_record?} %>
+    <%= add_choice_link(question) %>
+  <% end %>
+  <%= link_to "Remove question", [question.survey, question], method: 'delete', class: 'btn-remove btn btn-sm', data: {confirm: "Sure to remove this question?"} %>
+</div>

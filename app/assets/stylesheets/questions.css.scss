@@ -2,6 +2,7 @@
   padding: 10px;
   border: 1px dashed black;
   margin: 10px 0;
+  position: relative;
 }
 .question-title {
   margin-bottom: 10px;
@@ -15,4 +16,13 @@
 .questions-choices {
   padding: 10px;
   font-size: 1.2em;
+}
+
+.question {
+  .btn-remove {
+    visibility: hidden;
+  }
+  &:hover .btn-remove {
+    visibility: visible;
+  }
 }

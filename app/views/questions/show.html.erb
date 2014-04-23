@@ -2,5 +2,6 @@
   <h3><%= link_to @question.survey.title, @question.survey %> &#10095;&#10095; <%= @question.title %></h3>
 </div>
 <div class="question">
-  <%= render_question @question %>
+  <%= render "questions/kind/#{@question.kind}", question: @question %>
+  <%= render "questions/common", question: @question %>
 </div>

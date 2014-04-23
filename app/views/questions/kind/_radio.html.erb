@@ -3,11 +3,10 @@
 </div>
 
 <div class="question-choices">
-  <% question.choices.each do |choice| %>
-    <%= render_choice(choice) if choice.persisted? %>
+  <% question.choices.select{|c| c.persisted?}.each do |choice| %>
+    <div class="choice-container">
+      <%= render "choices/kind/#{question.kind}", choice: choice %>
+      <%= render "choices/common", choice: choice %>
+    </div>
   <% end %>
 </div>
-
-<% unless question.choices.detect{|e| e.new_record?} %>
-  <div><%= add_choice_link(question) %></div>
-<% end %>

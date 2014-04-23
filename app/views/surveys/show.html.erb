@@ -1,4 +1,4 @@
-<h1>
+<h1 class="survey-title">
   <%= @survey.title %>
   <small>
     <div class="badge badge-info"><%= pluralize @survey.responses.size, 'response' %></div>
@@ -17,15 +17,20 @@
   </div>
 </div>
 
-<div class="questions">
-  <% @survey.questions.each_with_index do |question, i| %>
-    <div class="question">
-      <%= render_question question %>
-    </div>
-  <% end %>
-</div>
-
 <p></p>
-<div>
-  <%= link_to "Add Question", new_survey_question_path(@survey), class: 'btn btn-default' %>
+<hr />
+<div class="survey-container">
+  <div class='survey-title'><%= @survey.title %></div>
+  <div class="questions">
+    <% @survey.questions.each_with_index do |question, i| %>
+      <div class="question">
+        <%= render "questions/kind/#{question.kind}", question: question %>
+        <%= render "questions/common", question: question %>
+      </div>
+    <% end %>
+  </div>
+  <p></p>
+  <div>
+    <%= link_to "Add Question", new_survey_question_path(@survey), class: 'btn btn-default' %>
+  </div>
 </div>

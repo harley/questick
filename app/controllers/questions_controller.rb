@@ -18,6 +18,17 @@ class QuestionsController < ApplicationController
     @question = Question.find params[:id]
   end
 
+  def destroy
+    @question = Question.find params[:id]
+    survey = @question.survey
+    @question.destroy
+    if survey
+      redirect_to survey, notice: "Question removed."
+    else
+      redirect_to root_path, notice: 'Question removed. Return to homepage because no associated survey is found'
+    end
+  end
+
   private
     def load_survey
       @survey = Survey.find params[:survey_id]
