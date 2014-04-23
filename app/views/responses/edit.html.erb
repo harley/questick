@@ -1,17 +1,12 @@
 <div ng-controller="ResponseCtrl" autosave="5000">
-  <div class="row">
-    <div class="col-sm-6">
-      <%= render 'response', response: @response %>
-    </div>
-    <% if admin? %>
-    <div class="col-sm-6" ng-controller='ResultsCtrl'>
-      <div class="well">{{response.answer_bucket}}</div>
-      <h3>Results</h3>
-      <button class='btn btn-sm btn-default' ng-click="reloadAnswers(<%= @response.id %>)">Reload</button>
-      <%= link_to "Export To CSV", survey_path(@response.survey, format: :csv), class: 'btn btn-default btn-sm' %>
-      <%= link_to "View CSV as Text", survey_path(@response.survey, format: :txt), class: 'btn btn-default btn-sm' %>
-      <div class="well">{{answers}}</div>
-    </div>
-    <% end %>
-  </div>
+  <%= render 'response', response: @response %>
+
+  <p></p>
+  <% if admin? %>
+    <div class="well">{{response.answer_bucket}}</div>
+    <h3>Results</h3>
+    <%= link_to "Export To CSV", survey_path(@response.survey, format: :csv), class: 'btn btn-default btn-sm' %>
+    <%= link_to "View CSV as Text", survey_path(@response.survey, format: :txt), class: 'btn btn-default btn-sm' %>
+    <div class="well">{{answers}}</div>
+  <% end %>
 </div>

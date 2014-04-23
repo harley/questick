@@ -1,5 +1,11 @@
+<h3>Surveys</h3>
 <ul>
   <% @surveys.each do |survey| %>
-    <li><%= link_to survey.title, survey %></li>
+    <li>
+      <%= link_to survey.title, survey %>
+      <span class="badge"><%= pluralize survey.questions.size, 'question' %></span>
+      <span class="badge"><%= pluralize survey.questions.size, 'responses' %></span>
+    </li>
   <% end %>
 </ul>
+<%= render 'surveys/passcode_form' %>

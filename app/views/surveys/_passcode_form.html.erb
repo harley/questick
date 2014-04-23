@@ -1,0 +1,12 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Have a passcode?</div>
+  <div class="panel-body">
+    <%= form_tag surveys_path, method: 'get' do %>
+      <div class="form-group">
+        <label>Enter passcode to see your surveys</label>
+        <input type="text" name="passcode" id="" value="" />
+      </div>
+      <%= submit_tag "Go", class: 'btn btn-default' %>
+    <% end %>
+  </div>
+</div>

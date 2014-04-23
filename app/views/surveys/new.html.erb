@@ -10,5 +10,7 @@
   <%= f.input :title %>
   <%= f.input :passcode %>
 
-  <%= f.submit 'Save', class: 'btn btn-default' %>
+  <div class="form-group">
+    <%= f.submit 'Save', class: 'btn btn-default', data: {disable_with: 'Please wait...'} %>
+  </div>
 <% end %>

@@ -1,1 +1,6 @@
-<%= render_question @question %>
+<div>
+  <h3><%= link_to @question.survey.title, @question.survey %> &#10095;&#10095; <%= @question.title %></h3>
+</div>
+<div class="question">
+  <%= render_question @question %>
+</div>
