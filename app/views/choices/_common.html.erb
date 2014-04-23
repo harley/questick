@@ -1,3 +1,16 @@
 <div class="choice-menu">
-  <%= link_to "Remove", [choice.question, choice], method: 'delete', class: 'visible-on-hover btn btn-xs', data: {confirm: "Sure to remove this choice?"} %>
+  <div class="btn-group btn-group-xs visible-on-hover">
+    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+      More
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+      <li><%= link_to "Move to first", move_choice_path(choice, dir: 'first'), method: 'put' %></li>
+      <li><%= link_to "Move up", move_choice_path(choice, dir: 'up'), method: 'put' %></li>
+      <li><%= link_to "Move down", move_choice_path(choice, dir: 'down'), method: 'put' %></li>
+      <li><%= link_to "Move to last", move_choice_path(choice, dir: 'last'), method: 'put' %></li>
+      <li class="divider"></li>
+      <%= link_to "Remove", [choice.question, choice], method: 'delete', data: {confirm: "Sure to remove this choice?"} %>
+    </ul>
+  </div>
 </div>

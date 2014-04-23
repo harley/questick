@@ -6,7 +6,7 @@ class Question < ActiveRecord::Base
 
   enumerize :kind, in: [:checkbox, :radio, :text]
   belongs_to :survey
-  has_many :choices, -> { order('position') }, dependent: :destroy
+  has_many :choices, -> { order('choices.position ASC') }, dependent: :destroy
 
   validates :kind, presence: true
 

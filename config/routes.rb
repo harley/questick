@@ -11,6 +11,10 @@ Rails.application.routes.draw do
     resources :answers
   end
 
+  resources :choices, only: [] do
+    put :move, on: :member
+  end
+
   resources :questions do
     resources :choices
     member do
