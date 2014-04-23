@@ -55,3 +55,4 @@ group :production, :staging do
 end
 
 gem 'ranked-model'
+gem 'unicorn'
