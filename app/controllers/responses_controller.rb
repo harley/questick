@@ -6,8 +6,10 @@ class ResponsesController < ApplicationController
     @response.referer = request.referer
     @response.embed = params[:embed]
     @response.start_at = Time.now
+    Response::HIDDEN_FIELDS.each do |field|
+      @response.send("#{field}=", params[field])
+    end
     @response.save!
-
     redirect_to edit_response_path(@response)
   end
 

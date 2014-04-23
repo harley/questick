@@ -4,7 +4,8 @@
     <% if admin? %>
       <a class='label label-default' href="<%= survey_path(response.survey) %>">Survey</a>
     <% end %>
-    {{response.survey.title}}</div>
+    {{response.survey.title}}
+  </div>
   <div class="questions">
     <div class="question" ng-repeat='question in response.questions' ng-controller='QuestionCtrl'>
       <div class='question-title'>
