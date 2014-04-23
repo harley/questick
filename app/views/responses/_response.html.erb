@@ -17,7 +17,7 @@
       <div class='question-choices'>
         <div ng-switch on="question.kind">
           <div ng-switch-when="radio">
-            <div ng-repeat='choice in question.choices' class="radio" ng-controller="AnswerCtrl">
+            <div ng-repeat='choice in question.choices' class="radio_choice" ng-controller="AnswerCtrl">
               <label has-answer>
                 <input value="{{choice.text}}" type='radio' name='question-{{question.id}}-radio'
                 ng-model='choice.currentAnswer.value' ng-change='clearOtherChoices(question, choice, choice.currentAnswer)'/>
@@ -26,7 +26,7 @@
             </div>
           </div>
           <div ng-switch-when="checkbox">
-            <div ng-repeat='choice in question.choices' class="checkbox" ng-controller="AnswerCtrl">
+            <div ng-repeat='choice in question.choices' class="checkbox_choice" ng-controller="AnswerCtrl">
               <label has-answer>
                 <input type="checkbox" value="{{choice.text}}"
                 ng-model="choice.currentAnswer.value" ng-true-value="{{choice.text}}" ng-false-value="" />

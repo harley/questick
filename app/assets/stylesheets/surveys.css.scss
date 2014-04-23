@@ -1,6 +1,8 @@
-.radio, .checkbox {
-  margin-bottom: 0;
-  margin-top: 0;
+.radio_choice, .checkbox_choice {
+  margin: 5px;
+  label {
+    font-weight: normal;
+  }
 }
 h1.survey-title {
   margin-top: 0;
