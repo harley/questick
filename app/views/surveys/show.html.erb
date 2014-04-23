@@ -7,12 +7,12 @@
 
 <div class="row" style="padding-right:20px">
   <div class="col-xs-6">
-    <%= link_to 'Take', new_response_path(survey_id: @survey.id), class: 'btn btn-default btn-sm' %>
+    <%= link_to 'Take', new_response_path(survey_id: @survey.id), class: 'btn btn-default btn-sm', target: '_blank' %>
     <%= link_to "Export To CSV", survey_path(@survey, format: :csv), class: 'btn btn-default btn-sm' %>
     <%= link_to "View CSV as Text", survey_path(@survey, format: :txt), class: 'btn btn-default btn-sm' %>
   </div>
   <div class="input-group col-xs-6 input-group-sm">
-    <span class="input-group-addon">Link</span>
+    <span class="input-group-addon">Embed this survey</span>
     <input type="text" class="form-control input-xs" value="<%= new_response_url(survey_id: @survey, embed: true) %>"/>
   </div>
 </div>

@@ -3,8 +3,10 @@
 </div>
 <div class="question-choices">
   <% question.choices.each do |choice| %>
-    <%= render_choice choice %>
+    <%= render_choice(choice) if choice.persisted? %>
   <% end %>
 </div>
 
-<div><%= add_choice_link(question) %></div>
+<% unless question.choices.detect{|e| e.new_record?} %>
+  <div><%= add_choice_link(question) %></div>
+<% end %>
