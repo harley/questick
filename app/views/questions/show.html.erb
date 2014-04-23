@@ -1,5 +1,7 @@
-<h3><%= bc_heading_question(@question) %></h3>
-<div class="question">
-  <%= render "questions/kind/#{@question.kind}", question: @question %>
-  <%= render "questions/common", question: @question %>
+<div class="survey-container">
+  <h3><%= bc_heading_question(@question) %></h3>
+  <div class="question">
+    <%= render "questions/kind/#{@question.kind}", question: @question %>
+    <%= render "questions/common", question: @question %>
+  </div>
 </div>

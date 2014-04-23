@@ -34,6 +34,16 @@
               </label>
             </div>
           </div>
+          <div ng-switch-when="text">
+            <div ng-repeat='choice in question.choices' class="text_choice" ng-controller="AnswerCtrl">
+              <label has-answer>
+                {{choice.text}}
+                <input type="text" value="{{choice.text}}"
+                ng-model="choice.currentAnswer.value" />
+              </label>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
