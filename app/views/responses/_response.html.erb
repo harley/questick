@@ -2,13 +2,11 @@
 
 <div class="survey-container" response="response">
   <div class='survey-title ng-cloak'>
-    <% if admin? %><a class='label label-default' href="<%= survey_path(response.survey) %>">Survey</a><% end %>
     {{response.survey.title}}
   </div>
   <div class="questions">
     <div class="question" ng-repeat='question in response.questions' ng-controller='QuestionCtrl'>
       <div class='question-title ng-cloak'>
-        <% if admin? %><span class='label label-default'>{{question.kind}}</span><% end %>
         {{question.title}}
       </div>
       <div class='question-choices ng-cloak'>

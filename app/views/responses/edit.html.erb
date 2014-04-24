@@ -1,4 +1,4 @@
-<div ng-controller="ResponseCtrl" autosave="5000">
+<div ng-controller="ResponseCtrl" autosave="500">
   <%= render 'response', response: @response %>
 
   <p></p>
@@ -7,6 +7,5 @@
     <h3>Results</h3>
     <%= link_to "Export To CSV", survey_path(@response.survey, format: :csv), class: 'btn btn-default btn-sm' %>
     <%= link_to "View CSV as Text", survey_path(@response.survey, format: :txt), class: 'btn btn-default btn-sm' %>
-    <div class="well">{{answers}}</div>
   <% end %>
 </div>

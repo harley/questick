@@ -1,7 +1,7 @@
 app = angular.module('myApp.directives', [])
 app.directive 'hasAnswer', ->
   return {
-    restrict: 'AE',
+    restrict: 'A',
     controller: ($scope, AnswerHelper) ->
       $scope.clearOtherChoices = (question, choice, currentAnswer)->
         angular.forEach question.choices, (c, index) ->
@@ -18,6 +18,10 @@ app.directive 'autosave', ($timeout, ResponseService) ->
   return {
     restrict: 'A',
     link: (scope, element, attrs) ->
+      duration = parseInt(attrs.autosave)
+      if isNaN(duration) or duration < 100
+        duration = 500
+
       saveUpdates = ->
         ResponseService.saveResponse(scope.response)
 
@@ -27,7 +31,7 @@ app.directive 'autosave', ($timeout, ResponseService) ->
         if newVal != oldVal
           if (timeoutPromise)
             $timeout.cancel(timeoutPromise)
-          timeoutPromise = $timeout(saveUpdates, 500)
+          timeoutPromise = $timeout(saveUpdates, duration)
 
       dummySave = -> console.log "dummy save"
 
