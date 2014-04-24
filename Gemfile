@@ -56,3 +56,5 @@ end
 
 gem 'ranked-model'
 gem 'unicorn'
+gem 'jquery-turbolinks'
+gem 'nprogress-rails'

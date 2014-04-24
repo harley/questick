@@ -1,19 +1,12 @@
 <div class="survey-container">
   <h1>New Survey</h1>
 
-  <% if @survey.errors.present? %>
-    <div class="alert alert-error">
-      <strong>Error:</strong>
-      <%= @survey.errors.full_messages.to_sentence %>
+  <%= simple_form_for @survey, html: {class: ''} do |f| %>
+    <%= f.input :title %>
+    <%= f.input :passcode %>
+
+    <div class="form-group">
+      <%= f.submit 'Save', class: 'btn btn-default', data: {disable_with: 'Please wait...'} %>
     </div>
   <% end %>
-
-<%= simple_form_for @survey, html: {class: ''} do |f| %>
-  <%= f.input :title %>
-  <%= f.input :passcode %>
-
-  <div class="form-group">
-    <%= f.submit 'Save', class: 'btn btn-default', data: {disable_with: 'Please wait...'} %>
-  </div>
-<% end %>
 </div>

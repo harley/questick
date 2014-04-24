@@ -1,7 +1,10 @@
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
-//= require turbolinks
 //= require bootstrap-custom
+//= require nprogress
+//= require nprogress-turbolinks
 //= require home
 //= require surveys
 //= require questions
+//= require turbolinks

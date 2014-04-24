@@ -10,7 +10,7 @@
       <li><%= link_to "Move down", move_choice_path(choice, dir: 'down'), method: 'put' %></li>
       <li><%= link_to "Move to last", move_choice_path(choice, dir: 'last'), method: 'put' %></li>
       <li class="divider"></li>
-      <%= link_to "Remove", [choice.question, choice], method: 'delete', data: {confirm: "Sure to remove this choice?"} %>
+      <li><%= link_to "Remove", [choice.question, choice], method: 'delete', data: {confirm: "Sure to remove this choice?"} %></li>
     </ul>
   </div>
 </div>
