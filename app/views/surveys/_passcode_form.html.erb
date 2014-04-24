@@ -6,7 +6,7 @@
         <label>Enter passcode to see your surveys</label>
         <input type="text" name="passcode" id="" value="" />
       </div>
-      <%= submit_tag "Go", class: 'btn btn-default' %>
+      <%= submit_tag "Find surveys", class: 'btn btn-default', data: {disable: 'Loading...'} %>
     <% end %>
   </div>
 </div>

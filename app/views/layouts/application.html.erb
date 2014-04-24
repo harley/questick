@@ -12,7 +12,7 @@
 <body>
   <% if flash.present? %>
     <%- flash.each do |name, msg| -%>
-      <div class="alert <%= flash_alert_class(name) %>">
+      <div class="flash-message alert <%= flash_alert_class(name) %>">
         <%= msg %>
         <div class="close" data-dismiss="alert">&times;</div>
       </div>
@@ -23,13 +23,9 @@
     <div class="container">
       <div class="navbar-header">
         <h1>
-          <a href="/" class="logo">
-            Questick
-          </a>
+          <a href="/" class="logo">Questick</a>
           <br>
-          <small>
-            Easily embed a survey on your site
-          </small>
+          <small>Easily embed a survey on your site</small>
         </h1>
       </div>
     </div>

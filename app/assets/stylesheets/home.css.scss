@@ -11,4 +11,18 @@
   .logo {
     text-decoration: none;
   }
+  border-bottom: 0;
+  h1 {
+    line-height: .9em;
+    > small {
+      border-bottom: 1px solid rgba(200, 200, 200, .5);
+      padding-bottom:5px;
+    }
+  }
 }
+.flash-message.alert {
+  border-radius: 0;
+  padding: 5px;
+  text-align: center;
+}
+
