@@ -14,6 +14,6 @@ class Api::AnswersController < ApplicationController
 
   private
     def answer_params
-      params.require(:answer).permit(:response_id, :question_id, :choice_id, :value)
+      params.require(:answer).permit(:response_id, :question_id, :choice_id, :value, :other)
     end
 end

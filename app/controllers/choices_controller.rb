@@ -1,5 +1,5 @@
 class ChoicesController < ApplicationController
-  before_action :load_question, except: [:move]
+  before_action :load_question, except: [:move, :toggle_allow_text]
 
   def new
     @choice = @question.choices.new
@@ -23,6 +23,12 @@ class ChoicesController < ApplicationController
   def move
     @choice = Choice.find params[:id]
     @choice.update_attribute :position_position, params[:dir]
+    redirect_to :back
+  end
+
+  def toggle_allow_text
+    @choice = Choice.find params[:id]
+    @choice.update_column :allow_text, !@choice.allow_text?
     redirect_to :back
   end
 

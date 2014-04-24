@@ -17,29 +17,32 @@
       <div class='question-choices ng-cloak'>
         <div ng-switch on="question.kind">
           <div ng-switch-when="radio">
-            <div ng-repeat='choice in question.choices' class="radio_choice" ng-controller="AnswerCtrl">
+            <div ng-repeat='choice in question.choices' class="radio_choice" ng-controller="AnswerCtrl" checkable-input choice="choice">
               <label has-answer>
                 <input value="{{choice.text}}" type='radio' name='question-{{question.id}}-radio'
                 ng-model='choice.currentAnswer.value' ng-change='clearOtherChoices(question, choice, choice.currentAnswer)'/>
                 {{choice.text}}
               </label>
+              <input type="text" name="question-{{question.id}}-radio-other"
+                     ng-if="choice.allow_text" ng-model="choice.currentAnswer.other" />
             </div>
           </div>
           <div ng-switch-when="checkbox">
-            <div ng-repeat='choice in question.choices' class="checkbox_choice" ng-controller="AnswerCtrl">
+            <div ng-repeat='choice in question.choices' class="checkbox_choice" ng-controller="AnswerCtrl" checkable-input choice="choice">
               <label has-answer>
                 <input type="checkbox" value="{{choice.text}}"
                 ng-model="choice.currentAnswer.value" ng-true-value="{{choice.text}}" ng-false-value="" />
                 {{choice.text}}
               </label>
+              <input type="text" name="question-{{question.id}}-checkbox-other"
+                     ng-if="choice.allow_text" ng-model="choice.currentAnswer.other" />
             </div>
           </div>
           <div ng-switch-when="text">
             <div ng-repeat='choice in question.choices' class="text_choice" ng-controller="AnswerCtrl">
               <label has-answer>
                 {{choice.text}}
-                <input type="text" value="{{choice.text}}"
-                ng-model="choice.currentAnswer.value" />
+                <input type="text" value="{{choice.text}}" ng-model="choice.currentAnswer.value" />
               </label>
             </div>
           </div>

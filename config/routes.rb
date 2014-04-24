@@ -12,7 +12,10 @@ Rails.application.routes.draw do
   end
 
   resources :choices, only: [] do
-    put :move, on: :member
+    member do
+      put :move
+      put :toggle_allow_text
+    end
   end
 
   resources :questions do

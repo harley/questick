@@ -20,6 +20,7 @@ class Api::ResponsesController < ApplicationController
     params[:bucket].each do |key, answer_hash|
       answer = Answer.find answer_hash[:id]
       answer.value = answer_hash[:value]
+      answer.other = answer_hash[:other]
       answer.save!
     end
 

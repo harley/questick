@@ -1,6 +1,9 @@
-<div class="checkbox_choice">
+<div class="checkbox_choice" <%= 'checkable-input' if choice.allow_text? %>>
   <label>
     <input type="checkbox">
     <%= choice.text %>
   </label>
+  <% if choice.allow_text? %>
+    <input type="text">
+  <% end %>
 </div>
