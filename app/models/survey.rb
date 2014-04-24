@@ -31,4 +31,8 @@ class Survey < ActiveRecord::Base
   def to_s
     title
   end
+
+  def passcode_matched?(code)
+    passcode.empty? || passcode == code
+  end
 end

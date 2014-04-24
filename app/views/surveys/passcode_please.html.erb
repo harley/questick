@@ -1,0 +1,16 @@
+<div class="survey-container">
+  <div class="alert">
+    <h2><small>Survey</small> <%= @survey.title %> <small>requires a passcode</small></h2>
+    <%= form_tag survey_path(@survey), method: 'get' do %>
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon">Passcode</span>
+          <%= text_field_tag :passcode, nil, class: 'form-control', autofocus: true %>
+          <div class="input-group-btn">
+            <button type="submit" class="btn btn-default btn-primary">Enter</button>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

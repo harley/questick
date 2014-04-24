@@ -1,4 +1,6 @@
 class SurveysController < ApplicationController
+  before_action :passcode_required, only: [:show]
+
   def index
     if params[:d] == 'supersecret'
       # TODO: admin only
@@ -18,7 +20,7 @@ class SurveysController < ApplicationController
   def create
     @survey = Survey.new(survey_params)
     if @survey.save
-      redirect_to @survey, notice: 'Created a survey. Make it great!'
+      redirect_to survey_path(@survey, passcode: @survey.passcode), notice: 'Created a survey. Make it great!'
     else
       render :new
     end
@@ -34,8 +36,20 @@ class SurveysController < ApplicationController
     end
   end
 
+  def passcode_please
+    @survey = Survey.find params[:id]
+  end
+
   private
     def survey_params
       params.require(:survey).permit(:title, :passcode)
+    end
+
+    def passcode_required
+      @survey = Survey.find params[:id]
+
+      unless @survey.passcode_matched?(params[:passcode])
+        redirect_to passcode_please_survey_path(@survey)
+      end
     end
 end
