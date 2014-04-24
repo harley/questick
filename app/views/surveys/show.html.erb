@@ -7,6 +7,7 @@
 
 <div class="text-center">
   <div>
+    <%= link_to "Edit Title", edit_survey_path(@survey, passcode: @survey.passcode), class: 'btn btn-default btn-xs' %>
     <%= link_to 'Take', new_response_path(survey_id: @survey.id), class: 'btn btn-default btn-xs', target: '_blank' %>
     <%= link_to "Export To CSV", survey_path(@survey, format: :csv), class: 'btn btn-default btn-xs' %>
     <%= link_to "View CSV as Text", survey_path(@survey, format: :txt), class: 'btn btn-default btn-xs' %>

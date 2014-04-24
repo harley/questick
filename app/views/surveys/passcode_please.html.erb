@@ -1,7 +1,7 @@
 <div class="survey-container">
   <div class="alert">
     <h2><small>Survey</small> <%= @survey.title %> <small>requires a passcode</small></h2>
-    <%= form_tag survey_path(@survey), method: 'get' do %>
+    <%= form_tag @url, method: 'get' do %>
       <div class="form-group">
         <div class="input-group">
           <span class="input-group-addon">Passcode</span>

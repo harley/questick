@@ -1,5 +1,5 @@
 class SurveysController < ApplicationController
-  before_action :passcode_required, only: [:show]
+  before_action :passcode_required, only: [:show, :edit]
 
   def index
     if params[:d] == 'supersecret'
@@ -26,6 +26,19 @@ class SurveysController < ApplicationController
     end
   end
 
+  def edit
+    @survey = Survey.find params[:id]
+  end
+
+  def update
+    @survey = Survey.find params[:id]
+    if @survey.update_attributes survey_params
+      redirect_to survey_path(@survey, passcode: @survey.passcode), notice: 'Survey updated.'
+    else
+      render 'edit'
+    end
+  end
+
   def show
     @survey = Survey.find params[:id]
 
@@ -38,6 +51,7 @@ class SurveysController < ApplicationController
 
   def passcode_please
     @survey = Survey.find params[:id]
+    @url = params[:from] || survey_path(@survey)
   end
 
   private
@@ -49,7 +63,7 @@ class SurveysController < ApplicationController
       @survey = Survey.find params[:id]
 
       unless @survey.passcode_matched?(params[:passcode])
-        redirect_to passcode_please_survey_path(@survey)
+        redirect_to passcode_please_survey_path(@survey, from: request.fullpath)
       end
     end
 end
