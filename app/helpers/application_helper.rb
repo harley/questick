@@ -9,4 +9,8 @@ module ApplicationHelper
       name.to_s
     end
   end
+
+  def ga_enabled?
+    Rails.application.secrets.ga_tracking_id.present?
+  end
 end
