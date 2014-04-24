@@ -1,17 +1,14 @@
 <script type="text/javascript" charset="utf-8">window.responseId = <%= response.id %></script>
+
 <div class="survey-container" response="response">
   <div class='survey-title ng-cloak'>
-    <% if admin? %>
-      <a class='label label-default' href="<%= survey_path(response.survey) %>">Survey</a>
-    <% end %>
+    <% if admin? %><a class='label label-default' href="<%= survey_path(response.survey) %>">Survey</a><% end %>
     {{response.survey.title}}
   </div>
   <div class="questions">
     <div class="question" ng-repeat='question in response.questions' ng-controller='QuestionCtrl'>
       <div class='question-title ng-cloak'>
-        <% if admin? %>
-          <span class='label label-default'>{{question.kind}}</span>
-        <% end %>
+        <% if admin? %><span class='label label-default'>{{question.kind}}</span><% end %>
         {{question.title}}
       </div>
       <div class='question-choices ng-cloak'>
@@ -20,7 +17,7 @@
             <div ng-repeat='choice in question.choices' class="radio_choice" ng-controller="AnswerCtrl" checkable-input choice="choice">
               <label has-answer>
                 <input value="{{choice.text}}" type='radio' name='question-{{question.id}}-radio'
-                ng-model='choice.currentAnswer.value' ng-change='clearOtherChoices(question, choice, choice.currentAnswer)'/>
+                       ng-model='choice.currentAnswer.value' ng-change='clearOtherChoices(question, choice, choice.currentAnswer)'/>
                 {{choice.text}}
               </label>
               <input type="text" name="question-{{question.id}}-radio-other"
@@ -31,7 +28,7 @@
             <div ng-repeat='choice in question.choices' class="checkbox_choice" ng-controller="AnswerCtrl" checkable-input choice="choice">
               <label has-answer>
                 <input type="checkbox" value="{{choice.text}}"
-                ng-model="choice.currentAnswer.value" ng-true-value="{{choice.text}}" ng-false-value="" />
+                       ng-model="choice.currentAnswer.value" ng-true-value="{{choice.text}}" ng-false-value="" />
                 {{choice.text}}
               </label>
               <input type="text" name="question-{{question.id}}-checkbox-other"
@@ -46,7 +43,6 @@
               </label>
             </div>
           </div>
-
         </div>
       </div>
     </div>

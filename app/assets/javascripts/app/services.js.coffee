@@ -1,14 +1,10 @@
 app = angular.module('myApp.services', [])
 
 app.factory 'ResponseService', ($http, $q, $resource) ->
-  Response = $resource('/api/responses/:responseId.json', 
-    { responseId: '@id' }, 
-    { 
-      updateAnswers: {
-        method: 'PUT', url: '/api/responses/:responseId/update_answers'
-      }
-    }
-  )
+  Response = $resource '/api/responses/:responseId.json', { responseId: '@id' },
+    updateAnswers:
+      method: 'PUT'
+      url: '/api/responses/:responseId/update_answers'
 
   service = 
     getResponse: (responseId) ->
@@ -20,7 +16,6 @@ app.factory 'ResponseService', ($http, $q, $resource) ->
         else
           d.reject data
       d.promise
-
     getAnswers: (responseId) ->
       d = $q.defer()
       url = '/api/responses' + '/' + responseId + '/answers'
@@ -30,21 +25,17 @@ app.factory 'ResponseService', ($http, $q, $resource) ->
         else
           d.reject data
       d.promise
-
     saveResponse: (response) ->
       console.log('saving answers')
       Response.updateAnswers({id: response.id, bucket: response.answer_bucket})
 
-  service
+  return service
 
 app.factory 'AnswerHelper', ->
   helper = 
     answerKey: (response, choice) ->
       ['a', response.id, choice.id].join('-')
-
     findAnswer: (response, choice) ->
        key = @answerKey(response, choice)
        response.answer_bucket[key]
-
   return helper
-

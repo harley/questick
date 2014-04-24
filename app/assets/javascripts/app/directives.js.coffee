@@ -56,6 +56,4 @@ app.directive 'checkableInput', ->
         $e.siblings().find(':radio').on 'change', ->
           if $(@).is(':checked')
             scope.choice.currentAnswer.other = null
-
-
   }
