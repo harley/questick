@@ -7,4 +7,5 @@
 //= require home
 //= require surveys
 //= require questions
+//= require analytics
 //= require turbolinks
