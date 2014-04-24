@@ -1,6 +1,6 @@
 <script type="text/javascript" charset="utf-8">window.responseId = <%= response.id %></script>
 <div class="survey-container" response="response">
-  <div class='survey-title'>
+  <div class='survey-title ng-cloak'>
     <% if admin? %>
       <a class='label label-default' href="<%= survey_path(response.survey) %>">Survey</a>
     <% end %>
@@ -8,13 +8,13 @@
   </div>
   <div class="questions">
     <div class="question" ng-repeat='question in response.questions' ng-controller='QuestionCtrl'>
-      <div class='question-title'>
+      <div class='question-title ng-cloak'>
         <% if admin? %>
           <span class='label label-default'>{{question.kind}}</span>
         <% end %>
         {{question.title}}
       </div>
-      <div class='question-choices'>
+      <div class='question-choices ng-cloak'>
         <div ng-switch on="question.kind">
           <div ng-switch-when="radio">
             <div ng-repeat='choice in question.choices' class="radio_choice" ng-controller="AnswerCtrl">
