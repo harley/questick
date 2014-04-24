@@ -5,7 +5,7 @@
       <li>
       <%= survey_link(survey) %>
       <span class="badge"><%= pluralize survey.questions.size, 'question' %></span>
-      <span class="badge"><%= pluralize survey.questions.size, 'responses' %></span>
+      <span class="badge"><%= pluralize survey.responses.size, 'responses' %></span>
       </li>
     <% end %>
   </ul>
