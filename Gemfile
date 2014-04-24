@@ -48,6 +48,8 @@ gem 'active_model_serializers', '~> 0.8.1'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'rack-mini-profiler', require: false
+  gem 'flamegraph'
 end
 
 group :production, :staging do
