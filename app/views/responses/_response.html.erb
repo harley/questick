@@ -1,22 +1,23 @@
 <script type="text/javascript" charset="utf-8">window.responseId = <%= response.id %></script>
 
-<div class="survey-container" response="response">
+<div class="survey-container" response="response" ng-controller="ResponseCtrl" autosave="500">
   <div class='survey-title ng-cloak'>
     {{response.survey.title}}
   </div>
   <div class="questions">
-    <div class="question" ng-repeat='question in response.questions' ng-controller='QuestionCtrl'>
+    <div class="question" ng-repeat='question in response.questions'>
       <div class='question-title ng-cloak'>
         {{question.title}}
       </div>
       <div class='question-choices ng-cloak'>
         <div ng-switch on="question.kind">
           <div ng-switch-when="radio">
-            <div ng-repeat='choice in question.choices' class="radio_choice" ng-controller="AnswerCtrl" checkable-input choice="choice">
-              <label has-answer>
+            <div ng-repeat='choice in question.choices' class="radio_choice" ng-controller="AnswerCtrl"
+                 checkable-input choice="choice" question="question" clear-siblings="clearOtherChoices(question, choice)">
+              <label>
                 <input value="{{choice.text}}" type='radio' name='question-{{question.id}}-radio'
-                       ng-model='choice.currentAnswer.value' ng-change='clearOtherChoices(question, choice, choice.currentAnswer)'/>
-                {{choice.text}}
+                       ng-model='choice.currentAnswer.value' ng-change='clearOtherChoices(question, choice)'/>
+                       {{choice.text}}
               </label>
               <input type="text" name="question-{{question.id}}-radio-other"
                      ng-if="choice.allow_text" ng-model="choice.currentAnswer.other" />
@@ -24,10 +25,10 @@
           </div>
           <div ng-switch-when="checkbox">
             <div ng-repeat='choice in question.choices' class="checkbox_choice" ng-controller="AnswerCtrl" checkable-input choice="choice">
-              <label has-answer>
+              <label>
                 <input type="checkbox" value="{{choice.text}}"
                        ng-model="choice.currentAnswer.value" ng-true-value="{{choice.text}}" ng-false-value="" />
-                {{choice.text}}
+                       {{choice.text}}
               </label>
               <input type="text" name="question-{{question.id}}-checkbox-other"
                      ng-if="choice.allow_text" ng-model="choice.currentAnswer.other" />
@@ -35,7 +36,7 @@
           </div>
           <div ng-switch-when="text">
             <div ng-repeat='choice in question.choices' class="text_choice" ng-controller="AnswerCtrl">
-              <label has-answer>
+              <label>
                 {{choice.text}}
                 <input type="text" value="{{choice.text}}" ng-model="choice.currentAnswer.value" />
               </label>
