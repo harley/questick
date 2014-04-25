@@ -6,4 +6,7 @@ class Response < ActiveRecord::Base
   has_many :questions, through: :survey
   has_many :answers
 
+  def completed?
+    !!stop_at
+  end
 end

@@ -13,4 +13,29 @@ class Question < ActiveRecord::Base
   def to_s
     title
   end
+
+  def export_headers
+    case kind
+    when "radio"
+      [title]
+    else
+      choices.map{|c| "#{title} :: #{c.text}"}
+    end
+  end
+
+  def export_rows(response)
+    row = []
+    case kind
+    when "radio"
+      answers = Answer.where(question_id: self.id, response_id: response.id)
+      row << answers.map(&:exported_value).join(',')
+    else
+      # one column per choice
+      choices.each do |choice|
+        answers = Answer.where(question_id: self.id, response_id: response.id, choice_id: choice.id)
+        row << answers.map(&:exported_value).join(',')
+      end
+    end
+    row
+  end
 end

@@ -10,9 +10,9 @@ class Answer < ActiveRecord::Base
     "a-#{response.id}-#{choice.id}"
   end
 
-  def quoted_value
-    if value && value.include?(',')
-      %{"#{value}"}
+  def exported_value
+    if other.present?
+      "#{value} :: #{other}"
     else
       value
     end
