@@ -12,11 +12,18 @@ class ResponsesController < ApplicationController
     end
 
     @response ||= @survey.responses.build
+    @response.email ||= params[:email]
 
     @response.ip = request.remote_ip
-    @response.referer = request.referer
-    @response.embed = params[:embed]
     @response.start_at = Time.now
+
+    @response.embed = params[:embed]
+    if params.has_key?(:referer)
+      @response.embedder = request.referer
+      @response.referer = params[:referer]
+    else
+      @response.referer = request.referer
+    end
 
     # Response::HIDDEN_FIELDS.each do |field|
     #   @response.send("#{field}=", params[field])

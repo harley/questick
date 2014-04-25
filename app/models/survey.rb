@@ -10,7 +10,7 @@ class Survey < ActiveRecord::Base
       csv << export_headers
 
       exportable_responses.each do |r|
-        row = [r.id, r.ip, r.referer, r.start_at, r.stop_at, r.email]
+        row = [r.id, r.ip, r.referer, r.embedder, r.start_at, r.stop_at, r.email]
         questions.each do |q|
           row.push(*q.export_rows(r))
         end
@@ -20,7 +20,7 @@ class Survey < ActiveRecord::Base
   end
 
   def export_headers
-    ret = ['id', 'ip', 'referer', 'start at', 'stop at', 'email']
+    ret = ['id', 'ip', 'referer', 'embedder','start at', 'stop at', 'email']
     questions.each do |question|
       ret.push(*question.export_headers)
     end

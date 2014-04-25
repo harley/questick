@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140425040158) do
+ActiveRecord::Schema.define(version: 20140425053339) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20140425040158) do
     t.datetime "start_at"
     t.datetime "stop_at"
     t.string   "email"
+    t.string   "embedder"
   end
 
   add_index "responses", ["email"], name: "index_responses_on_email", using: :btree
