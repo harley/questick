@@ -52,3 +52,18 @@ app.directive 'checkableInput', ->
           if $(@).is(':checked')
             scope.choice.currentAnswer.other = null
   }
+
+app.directive 'pingback', ($http) ->
+  return {
+    scope: 
+      email: '@'
+      pingback: '@'
+    link: (scope, element, attrs) ->
+      console.log 'pingback', scope.pingback, scope.email
+      if scope.pingback
+        jQuery.post(scope.pingback, email: scope.email)
+          .success (data, status) ->
+            console.log 'success', data, status
+          .error (data, status) ->
+            console.log 'error', data, status
+  }

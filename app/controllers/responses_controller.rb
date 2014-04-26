@@ -24,6 +24,7 @@ class ResponsesController < ApplicationController
     else
       @response.referer = request.referer
     end
+    @response.callback = params[:callback]
 
     # Response::HIDDEN_FIELDS.each do |field|
     #   @response.send("#{field}=", params[field])
@@ -49,6 +50,11 @@ class ResponsesController < ApplicationController
   end
 
   def thankyou
-    render layout: 'plain'
+    @response = Response.find params[:id]
+    if @response.completed?
+      render layout: 'plain'
+    else
+      redirect_to edit_response_path(@response)
+    end
   end
 end
