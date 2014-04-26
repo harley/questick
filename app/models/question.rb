@@ -28,7 +28,7 @@ class Question < ActiveRecord::Base
     case kind
     when "radio"
       answers = Answer.where(question_id: self.id, response_id: response.id)
-      row << answers.map(&:exported_value).join(',')
+      row << answers.map(&:exported_value).select(&:present?).join(',')
     else
       # one column per choice
       choices.each do |choice|
