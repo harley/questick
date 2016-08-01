@@ -8,7 +8,7 @@ class QuestionsController < ApplicationController
   def create
     @question = @survey.questions.build question_params
     if @question.save
-      redirect_to @survey, notice: 'Question added.'
+      redirect_to edit_survey_path(@survey), notice: 'Question added.'
     else
       render 'new'
     end

@@ -2,7 +2,7 @@ require 'csv'
 class Survey < ActiveRecord::Base
   validates :title, presence: true
   has_many :questions, -> { order('questions.position ASC') }, dependent: :destroy
-  has_many :responses
+  has_many :responses, dependent: :destroy, counter_cache: true
 
   # TODO handle
   def to_csv(exportable_responses)
